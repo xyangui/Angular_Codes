@@ -1,0 +1,33 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div style="text-align:center">
+  <h1>
+    例1：css的使用，在app.component.css里添加 Welcome to {{ title }}!
+  </h1>
+</div>
+
+<h2>例2：*ngFor的使用 My favorite hero is: {{myHero}}</h2>
+<p>字符串数组:</p>
+<ul>
+  <li *ngFor="let hero of heroes">
+    {{ hero }}
+  </li>
+</ul>
+
+<h2>例3：实体类的使用 My favorite hero is: {{myHeroObject.name}}</h2>
+<p>实体类数组:</p>
+<ul>
+  <li *ngFor="let hero of heroObjectes">
+    {{ hero.name }}
+  </li>
+</ul>
+
+<h2>例4：*ngIf的使用 My favorite hero is: {{myHeroObject.name}}</h2>
+<p>Heroes:</p>
+<ul>
+  <li *ngFor="let hero of heroObjectes">
+    {{ hero.name }}
+  </li>
+</ul>
+<p *ngIf="heroObjectes.length > 3">只有hero数量大于3时才显示这句话！Angular并不是显示和隐藏，它是在从DOM中添加和移除元素</p>
+
+
