@@ -1,4 +1,5 @@
 
+cd No00x-xxx
 npm  install
 ng serve -o
 
