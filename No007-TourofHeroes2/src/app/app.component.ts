@@ -22,7 +22,7 @@ const HEROES: Hero[] = [
   selector: 'app-root',
   template: `
     <h1>{{title}}</h1>
-    <h2>My *ngFor</h2>
+    <h2>My *ngFor</h2><!--*ngFor示例 -->
     <ul class="heroes">
       <li *ngFor="let hero2 of heroes.slice(1,4)">
         <span class="badge">{{hero2.id}}</span> {{hero2.name}}
@@ -36,7 +36,7 @@ const HEROES: Hero[] = [
         <span class="badge">{{hero.id}}</span> {{hero.name}}
       </li>
     </ul>
-    <div *ngIf="selectedHero"><!--selectedHero == undefined 时，不显示div-->
+    <div *ngIf="selectedHero"><!--*ngIf示例 selectedHero == undefined 时，不显示div-->
       <h2>{{selectedHero.name}} details!</h2>
       <div><label>id: </label>{{selectedHero.id}}</div>
       <div>

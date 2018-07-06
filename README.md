@@ -14,6 +14,7 @@ No002-CSSandShowData     css和显示数据例子，ngFor和ngIf的使用，字�
 No003-UserInput          按钮点击，输入框输入数据，keyup、enter键、失去焦点事件
 No004-Forms              表单
 No005-TourofHeroes       英雄指南
-No006-TourofHeroes1      英雄指南1，显示数据，输入框输入数据，数据双向绑定
-No006-TourofHeroes2      英雄指南2，*ngFor，*ngIf
+No006-TourofHeroes1      英雄指南1，显示数据，输入框输入数据，*ngModel双向数据绑定
+No007-TourofHeroes2      英雄指南2，*ngFor，*ngIf
+No008-TourofHeroes3      英雄指南3，创建组件，并添加到模块，@Input()属性输入
 
