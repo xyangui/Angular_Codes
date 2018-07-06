@@ -12,7 +12,7 @@ export class ArrayComponent {
     emptyArray[0] = "这是一个测试";
     //alert(emptyArray[0]);
 
-    let actors: string[] = ["张三","李四","王五","赵六"];
+    let actors: string[] = ["张三","李四","王五","赵六","徐七"];
     //alert(actors.length); //数组长度
 
     //遍历
@@ -55,6 +55,9 @@ export class ArrayComponent {
     // 返回被反转后的数组,使得最后一个元素变为第1个元素,第1个元素变为最后一个元素.
 
     //slice() 方法 该方法返回指定起始位置的一个新的数组,
+    let actors2: string[] = ["张三","李四","王五","赵六","徐七"];
+    let newActors1 = actors2.slice(1,3); //["李四","王五"];
+    let newActors2 = actors2.slice(1,4); //["李四","王五","赵六"];
 
     //sort() 方法 排序数组,如果没有指定参数,那么将会按照字母数字顺序进行排序
 

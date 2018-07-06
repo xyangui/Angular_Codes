@@ -53,6 +53,28 @@ export class BasetypeComponent {
     for (let k in map) {
       value = map[k];  //3，5，10
     }
+
+    /* === 与 == */
+    let num11;
+    num11 = 11;
+    let str11 = "11";
+    let num22 = 22;
+
+    var isEqual: boolean;
+    isEqual = num11 == str11; //true，把str转换为数字，比较
+    isEqual = str11 == num11; //true，
+    isEqual = num11 === str11;//flase，类型不同
+    isEqual = num11 === num22;//flase，类型相同，值不同
+
+    /* === 也可以比较字符串 */
+    let str22 = "11";
+    let str44 = "44";
+    isEqual = str11 === str22;//true，类型相同，值相同
+    isEqual = str11 === str44;//flase，类型相同，值不同
+
+    //结论：所有判断都用=== 而不用 == ，除了判断 x == null，因为即将 x == null 是 x === null || x === undefined 的缩写。
+
+
   }
 
   //空值
