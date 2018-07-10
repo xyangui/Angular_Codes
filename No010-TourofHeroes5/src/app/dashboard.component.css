@@ -1,8 +1,14 @@
+/*http://www.w3school.com.cn/cssref/css_selectors.asp*/
+/*http://www.w3school.com.cn/cssref/selector_attr_contain.asp*/
+/*http://www.w3school.com.cn/cssref/selector_attr_begin.asp*/
+/*http://www.w3school.com.cn/cssref/selector_attr_end.asp*/
+/*所有包含 col- 的class都添加*/
 [class*='col-'] {
   float: left;
   padding-right: 20px;
   padding-bottom: 20px;
 }
+/*last-of-type 代表最后一个含有 col- 的元素*/
 [class*='col-']:last-of-type {
   padding-right: 0;
 }
@@ -46,6 +52,8 @@ h4 {
 .grid-pad > [class*='col-']:last-of-type {
   padding-right: 20px;
 }
+/* @media 响应式 */
+/*http://www.runoob.com/cssref/css3-pr-mediaquery.html*/
 @media (max-width: 600px) {
   .module {
     font-size: 10px;
