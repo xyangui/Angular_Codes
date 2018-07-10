@@ -17,4 +17,5 @@ No005-TourofHeroes       英雄指南
 No006-TourofHeroes1      英雄指南1，显示数据，输入框输入数据，*ngModel双向数据绑定
 No007-TourofHeroes2      英雄指南2，*ngFor，*ngIf
 No008-TourofHeroes3      英雄指南3，创建组件，并添加到模块，@Input()属性输入
+No009-TourofHeroes4      英雄指南4，service类、返回Promise，ngOnInit，模拟英雄数据
 
