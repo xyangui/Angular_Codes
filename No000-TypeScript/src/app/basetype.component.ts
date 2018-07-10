@@ -75,6 +75,9 @@ export class BasetypeComponent {
     //结论：所有判断都用=== 而不用 == ，除了判断 x == null，因为即将 x == null 是 x === null || x === undefined 的缩写。
 
 
+    let i22 = +str22; //i22 = 11 : number;
+
+
   }
 
   //空值

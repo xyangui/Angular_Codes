@@ -12,6 +12,7 @@ export class DashboardComponent implements OnInit {
 
   heroes: Hero[] = [];
 
+  // Angular 会把HeroService注入到DashboardComponent
   constructor(private heroService: HeroService) { }
 
   ngOnInit(): void {

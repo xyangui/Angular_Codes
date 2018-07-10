@@ -25,4 +25,5 @@ import { HeroService }          from './hero.service';
   providers: [ HeroService ],
   bootstrap: [ AppComponent ]
 })
+// 创建了一个HeroService的单例对象，应用中的所有组件都可以使用它
 export class AppModule { }
