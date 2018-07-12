@@ -2,6 +2,7 @@
 /*http://www.w3school.com.cn/cssref/selector_attr_contain.asp*/
 /*http://www.w3school.com.cn/cssref/selector_attr_begin.asp*/
 /*http://www.w3school.com.cn/cssref/selector_attr_end.asp*/
+
 /*所有包含 col- 的class都添加*/
 [class*='col-'] {
   float: left;

@@ -31,6 +31,7 @@ export class HeroDetailComponent implements OnInit {
     //   .switchMap((params: Params) => this.heroService.getHero(+params['id']))
     //   .subscribe(hero => this.hero = hero);
 
+    // 通过参数id，取出响应数据
     this.route.params.pipe(
       switchMap((params: Params) => this.heroService.getHero(+params['id'])))
       .subscribe(hero => this.hero = hero);
@@ -41,6 +42,7 @@ export class HeroDetailComponent implements OnInit {
   }
 
   goBack(): void {
+
     this.location.back();
   }
 }

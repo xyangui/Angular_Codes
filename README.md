@@ -14,9 +14,9 @@ No002-CSSandShowData     css和显示数据例子，ngFor和ngIf的使用，字�
 No003-UserInput          按钮点击，输入框输入数据，keyup、enter键、失去焦点事件
 No004-Forms              表单
 No005-TourofHeroes       英雄指南
-No006-TourofHeroes1      英雄指南1，显示数据，输入框输入数据，*ngModel双向数据绑定
-No007-TourofHeroes2      英雄指南2，*ngFor，*ngIf
-No008-TourofHeroes3      英雄指南3，创建组件，并添加到模块，@Input()属性输入，给组件传入参数
-No009-TourofHeroes4      英雄指南4，service类、返回Promise，ngOnInit，模拟英雄数据
-No010-TourofHeroes5      英雄指南5，组件之路由，路由链接参数id，共享HeroService服务，uppercase管道
+No006-TourofHeroes1      英雄编辑器：显示数据，输入框输入数据，*ngModel双向数据绑定
+No007-TourofHeroes2      主从结构：  *ngFor，*ngIf
+No008-TourofHeroes3      多个组件：  创建组件，并添加到模块，@Input()属性输入，给组件传入参数
+No009-TourofHeroes4      服务：     service类、返回Promise，ngOnInit，模拟英雄数据
+No010-TourofHeroes5      路由：     组件之路由，路由链接参数id，共享HeroService服务，uppercase管道
 
