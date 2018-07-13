@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+
 import { Observable, Subject, of } from 'rxjs';
 import {
   catchError,
@@ -7,6 +8,7 @@ import {
   distinctUntilChanged,
   switchMap
 } from 'rxjs/operators';
+
 import { Hero } from './hero';
 import { HeroSearchService } from './hero-search.service';
 
@@ -34,8 +36,7 @@ export class HeroSearchComponent implements OnInit {
     this.heroes = this.searchTerms.pipe(
       debounceTime(300), // wait for 300ms pause in events
       distinctUntilChanged(), // ignore if next search term is same as previous
-      switchMap(
-        term =>
+      switchMap(term =>
           term // switch to new observable each time
             ? // return the http search observable
               this.heroSearchService.search(term)

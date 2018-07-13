@@ -1,34 +1,40 @@
-import { Injectable } from '@angular/core';
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import {Injectable} from '@angular/core';
+import {HttpClient, HttpErrorResponse} from '@angular/common/http';
 
-import { Observable, throwError as observableThrowError } from 'rxjs';
-import { catchError, map } from 'rxjs/operators';
+import {Observable, throwError as observableThrowError} from 'rxjs';
+import {catchError, map} from 'rxjs/operators';
 
-import { Hero } from './hero';
+import {Hero} from './hero';
 
 @Injectable()
 export class HeroService {
+
   private heroesUrl = 'app/heroes'; // URL to web api
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) {
+  }
 
   getHeroes() {
     return this.http
-      .get<Hero[]>(this.heroesUrl)
-      .pipe(map(data => data), catchError(this.handleError));
+        .get<Hero[]>(this.heroesUrl)
+        .pipe(map(data => data), catchError(this.handleError));
   }
 
   getHero(id: number): Observable<Hero> {
     return this.getHeroes().pipe(
-      map(heroes => heroes.find(hero => hero.id === id))
+        map(heroes => heroes.find(hero => hero.id === id))
     );
   }
 
-  save(hero: Hero) {
-    if (hero.id) {
-      return this.put(hero);
-    }
-    return this.post(hero);
+  // Add new Hero
+  private post(hero: Hero) {
+    const headers = new Headers({
+      'Content-Type': 'application/json'
+    });
+
+    return this.http
+        .post<Hero>(this.heroesUrl, hero)
+        .pipe(catchError(this.handleError));
   }
 
   delete(hero: Hero) {
@@ -40,17 +46,6 @@ export class HeroService {
     return this.http.delete<Hero>(url).pipe(catchError(this.handleError));
   }
 
-  // Add new Hero
-  private post(hero: Hero) {
-    const headers = new Headers({
-      'Content-Type': 'application/json'
-    });
-
-    return this.http
-      .post<Hero>(this.heroesUrl, hero)
-      .pipe(catchError(this.handleError));
-  }
-
   // Update existing Hero
   private put(hero: Hero) {
     const headers = new Headers();
@@ -59,6 +54,13 @@ export class HeroService {
     const url = `${this.heroesUrl}/${hero.id}`;
 
     return this.http.put<Hero>(url, hero).pipe(catchError(this.handleError));
+  }
+
+  save(hero: Hero) {
+    if (hero.id) {
+      return this.put(hero);
+    }
+    return this.post(hero);
   }
 
   private handleError(res: HttpErrorResponse | any) {

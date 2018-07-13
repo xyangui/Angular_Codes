@@ -1,5 +1,8 @@
-import { Component, OnInit, EventEmitter, Input, Output } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
+import { Location }               from '@angular/common';
+
+import { switchMap } from 'rxjs/operators';
 
 import { Hero } from './hero';
 import { HeroService } from './hero.service';
@@ -11,17 +14,26 @@ import { HeroService } from './hero.service';
 })
 export class HeroDetailComponent implements OnInit {
 
-  @Input() hero: Hero;
-  @Output() close = new EventEmitter();
-  error: any;
+  hero: Hero;
+
+  //@Input() hero: Hero;
+  //@Output() close = new EventEmitter();
+  //error: any;
   navigated = false; // true if navigated here
 
   constructor(
     private heroService: HeroService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private location: Location
   ) {}
 
   ngOnInit(): void {
+
+    // 通过参数id，取出响应数据
+    // this.route.params.pipe(
+    //     switchMap((params: Params) => this.heroService.getHero(+params['id'])))
+    //     .subscribe(hero => this.hero = hero);
+
     this.route.params.forEach((params: Params) => {
       if (params['id'] !== undefined) {
         const id = +params['id'];
@@ -38,13 +50,10 @@ export class HeroDetailComponent implements OnInit {
     this.heroService.save(this.hero).subscribe(hero => {
       this.hero = hero; // saved hero, w/ id if new
       this.goBack(hero);
-    }, error => (this.error = error)); // TODO: Display error message
+    });
   }
 
   goBack(savedHero: Hero = null): void {
-    this.close.emit(savedHero);
-    if (this.navigated) {
-      window.history.back();
-    }
+    this.location.back();
   }
 }

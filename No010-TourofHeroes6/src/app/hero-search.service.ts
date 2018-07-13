@@ -1,5 +1,6 @@
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+
 import { Observable, throwError as observableThrowError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 
@@ -7,6 +8,7 @@ import { Hero } from './hero';
 
 @Injectable()
 export class HeroSearchService {
+
   constructor(private http: HttpClient) {}
 
   search(term: string): Observable<Hero[]> {
