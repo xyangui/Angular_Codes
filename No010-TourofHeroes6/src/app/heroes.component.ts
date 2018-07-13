@@ -37,6 +37,8 @@ export class HeroesComponent implements OnInit {
 
     let hero: Hero = new Hero();
     hero.name = name;
+    //hero.id 没有赋值， = undefined
+    //if (hero.id) = fasle
 
     this.heroService.save(hero).subscribe(hero => {
       this.heroes.push(hero);
