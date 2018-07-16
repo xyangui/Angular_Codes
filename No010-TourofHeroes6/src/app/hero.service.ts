@@ -27,7 +27,7 @@ export class HeroService {
   }
 
   // Add new Hero
-  private post(hero: Hero) {
+  post(hero: Hero) {
     const headers = new Headers({
       'Content-Type': 'application/json'
     });
@@ -47,20 +47,13 @@ export class HeroService {
   }
 
   // Update existing Hero
-  private put(hero: Hero) {
+  put(hero: Hero) {
     const headers = new Headers();
     headers.append('Content-Type', 'application/json');
 
     const url = `${this.heroesUrl}/${hero.id}`;
 
     return this.http.put<Hero>(url, hero).pipe(catchError(this.handleError));
-  }
-
-  save(hero: Hero) {
-    if (hero.id) {
-      return this.put(hero);
-    }
-    return this.post(hero);
   }
 
   private handleError(res: HttpErrorResponse | any) {

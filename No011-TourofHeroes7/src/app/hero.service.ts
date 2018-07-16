@@ -23,22 +23,6 @@ export class HeroService {
     );
   }
 
-  save(hero: Hero) {
-    if (hero.id) {
-      return this.put(hero);
-    }
-    return this.post(hero);
-  }
-
-  delete(hero: Hero) {
-    const headers = new Headers();
-    headers.append('Content-Type', 'application/json');
-
-    const url = `${this.heroesUrl}/${hero.id}`;
-
-    return this.http.delete<Hero>(url).pipe(catchError(this.handleError));
-  }
-
   // Add new Hero
   private post(hero: Hero) {
     const headers = new Headers({
@@ -50,6 +34,15 @@ export class HeroService {
       .pipe(catchError(this.handleError));
   }
 
+  delete(hero: Hero) {
+    const headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+
+    const url = `${this.heroesUrl}/${hero.id}`;
+
+    return this.http.delete<Hero>(url).pipe(catchError(this.handleError));
+  }
+
   // Update existing Hero
   private put(hero: Hero) {
     const headers = new Headers();
@@ -58,6 +51,20 @@ export class HeroService {
     const url = `${this.heroesUrl}/${hero.id}`;
 
     return this.http.put<Hero>(url, hero).pipe(catchError(this.handleError));
+  }
+
+  /**
+   *  let hero: Hero = new Hero();
+   *  hero.name = name;
+   *
+   *  hero.id 没有赋值， = undefined
+   *  if (hero.id) = false
+   */
+  save(hero: Hero) {
+    if (hero.id) {
+      return this.put(hero);
+    }
+    return this.post(hero);
   }
 
   private handleError(res: HttpErrorResponse | any) {

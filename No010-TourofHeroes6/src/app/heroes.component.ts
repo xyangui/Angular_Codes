@@ -12,20 +12,15 @@ import {HeroService} from './hero.service';
 export class HeroesComponent implements OnInit {
   heroes: Hero[];
   selectedHero: Hero;
-  //addingHero = false;
-  //error: any;
-  //showNgFor = false;
 
-  constructor(private router: Router, private heroService: HeroService) {
-  }
+  constructor(private router: Router, private heroService: HeroService) {}
 
   getHeroes(): void {
     this.heroService
         .getHeroes()
         .subscribe(
             heroes => (this.heroes = heroes),
-            //error => (this.error = error)
-        )
+        );
   }
 
   add(name: string): void {
@@ -37,40 +32,24 @@ export class HeroesComponent implements OnInit {
 
     let hero: Hero = new Hero();
     hero.name = name;
-    //hero.id 没有赋值， = undefined
-    //if (hero.id) = fasle
 
-    this.heroService.save(hero).subscribe(hero => {
+    this.heroService.post(hero).subscribe(hero => {
       this.heroes.push(hero);
       this.selectedHero = null;
     });
-
-    // this.heroService.create(name)
-    //     .then(hero => {
-    //       this.heroes.push(hero);
-    //       this.selectedHero = null;
-    //     });
   }
 
   delete(hero: Hero): void {
 
+    this.heroService
+      .delete(hero)
+      .subscribe(res => {
 
-    this.heroService.delete(hero).subscribe(res => {
       this.heroes = this.heroes.filter(h => h !== hero);
       if (this.selectedHero === hero) {
         this.selectedHero = null;
       }
     });
-
-
-    // this.heroService
-    //     .delete(hero.id)
-    //     .then(() => {
-    //       this.heroes = this.heroes.filter(h => h !== hero);
-    //       if (this.selectedHero === hero) {
-    //         this.selectedHero = null;
-    //       }
-    //     });
   }
 
   ngOnInit(): void {
@@ -79,7 +58,6 @@ export class HeroesComponent implements OnInit {
 
   onSelect(hero: Hero): void {
     this.selectedHero = hero;
-    //this.addingHero = false;
   }
 
   gotoDetail(): void {

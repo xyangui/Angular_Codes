@@ -11,9 +11,9 @@ import { HeroService } from './hero.service';
 export class HeroesComponent implements OnInit {
   heroes: Hero[];
   selectedHero: Hero;
-  addingHero = false;
+  addingHero = false;  //只有点击"Add New Hero"时，= true
   error: any;
-  showNgFor = false;
+  //showNgFor = false;
 
   constructor(private router: Router, private heroService: HeroService) {}
 

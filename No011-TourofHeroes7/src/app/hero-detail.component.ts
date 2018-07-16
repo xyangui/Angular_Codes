@@ -19,6 +19,15 @@ export class HeroDetailComponent implements OnInit {
     private route: ActivatedRoute
   ) {}
 
+  /**
+   *  可以从两种方式显示该组件：
+   *  1、在 dashboard.component.html 中的：
+   *  <a *ngFor="let hero of heroes"  [routerLink]="['/detail', hero.id]"  class="col-1-4">
+   *  和 在 heroes.component.ts 中的：
+   *  this.router.navigate(['/detail', this.selectedHero.id]);       路由到detail
+   *  2、也可以在 heroes.component.html 中的：
+   * <my-hero-detail (close)="close($event)"></my-hero-detail>       直接显示该组件
+   */
   ngOnInit(): void {
     this.route.params.forEach((params: Params) => {
       if (params['id'] !== undefined) {
