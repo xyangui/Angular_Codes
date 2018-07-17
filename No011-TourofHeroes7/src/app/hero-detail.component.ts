@@ -12,7 +12,7 @@ import { HeroService } from './hero.service';
 })
 export class HeroDetailComponent implements OnInit {
   @Input() hero: Hero;
-  @Output() close = new EventEmitter();
+  @Output() close55 = new EventEmitter();
   error: any;
   navigated = false; // true if navigated here
 
@@ -60,7 +60,7 @@ export class HeroDetailComponent implements OnInit {
    * 修改已经存在的hero，save()后，=null，点击Back按钮时，=null
    */
   goBack(savedHero: Hero = null): void {
-    this.close.emit(savedHero);  //带参数发送事件
+    this.close55.emit(savedHero);  //带参数发送事件
 
     /**
      * 如果是在heroes.component.ts组件里"Add New Hero"，执行顺序是：

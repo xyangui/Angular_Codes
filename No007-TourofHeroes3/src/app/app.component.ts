@@ -28,6 +28,7 @@ const HEROES: Hero[] = [
       </li>
     </ul>
     <hero-detail [hero]="selectedHero"></hero-detail>
+    <!--[hero] = "selectHero"，[子组件接受传参的变量名] = “主组件的变量”-->
   `,
   styles: [`
     .selected {
