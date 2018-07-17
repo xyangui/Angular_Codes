@@ -31,6 +31,15 @@ export class HeroesComponent implements OnInit {
     this.selectedHero = null;
   }
 
+  /**
+   * 点击按钮"Add New Hero"，出现"my-hero-detail"，
+   * 点击按钮"Back"执行顺序是：
+   * this.close.emit(savedHero);  （hero-detail.component.ts中的goBack(savedHero: Hero = null)）
+   * close(savedHero: Hero);      （下面的）
+   * if (this.navigated) {...}    （hero-detail.component.ts中的goBack(savedHero: Hero = null)）
+   *
+   * @param {Hero} savedHero
+   */
   close(savedHero: Hero): void {
     this.addingHero = false;
     if (savedHero) {

@@ -50,7 +50,9 @@ export class HeroService {
 
     const url = `${this.heroesUrl}/${hero.id}`;
 
-    return this.http.put<Hero>(url, hero).pipe(catchError(this.handleError));
+    return this.http
+      .put<Hero>(url, hero)
+      .pipe(catchError(this.handleError));
   }
 
   /**

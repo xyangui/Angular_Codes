@@ -13,6 +13,7 @@
 <button (click)="addHero()">Add New Hero</button>
 <div *ngIf="addingHero">
   <my-hero-detail (close)="close($event)"></my-hero-detail>
+  <!--(close)是指my-hero-detail中的事件，close($event)是指本 ts 文件中的方法-->
 </div>
 
 <div *ngIf="selectedHero">
