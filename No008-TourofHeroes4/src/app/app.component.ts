@@ -73,6 +73,10 @@ export class AppComponent implements OnInit {
   heroes: Hero[];
   selectedHero: Hero;
 
+  // 构造函数参数类型、@Component装饰器和父级的providers信息合起来告诉 Angular 的注入器，
+  // 任何新建HeroListComponent的时候，注入一个HeroService的实例。
+  // http://origin.angular.live/docs/ts/latest/guide/dependency-injection.html#!#providers
+  // 在一个注入器的范围内，依赖都是单例的。 在这个例子中，HeroesComponent和它的子组件HeroListComponent共享同一个HeroService实例。
   constructor(private heroService: HeroService) { }
 
   getHeroes(): void {
