@@ -7,7 +7,11 @@ import { Hero } from './hero';
 
 @Injectable()
 export class HeroService {
-  private heroesUrl = 'app/heroes'; // URL to web api
+
+  private heroesUrl = 'app444/heroes1'; // URL to web api
+  // "/"前面的app444定义成什么都可以
+  // "/"后面这个 heroes 对应则是 in-memory-data.service 返回的{heroes}
+  // 因为这个内存Web服务的机理是拦截Web访问，也就是说随便什么地址都可以，内存Web服务会拦截这个地址并解析你的请求是否满足RESTful API的要求 
 
   constructor(private http: HttpClient) {}
 
