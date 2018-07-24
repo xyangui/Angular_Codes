@@ -1,9 +1,10 @@
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import {HttpClient, HttpErrorResponse, HttpHeaders} from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, throwError as observableThrowError } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 
 import { Hero } from './hero';
+import {RequestOptions} from "@angular/http";
 
 @Injectable()
 export class HeroService {
@@ -19,13 +20,21 @@ export class HeroService {
 
   //private heroesUrl = 'https://www.easy-mock.com/mock/5a3b29c83886356782308633/q2'; // URL to web api
 
+  //private heroesUrl = 'http://gc.ditu.aliyun.com/regeocoding?l=39.938133,116.395739&type=001';
+
   constructor(private http: HttpClient) {}
 
   getHeroes() {
 
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+      }),
+      dataType: 'jsonp',
+    };
 
     return this.http
-      .get<Array<Hero>>(this.heroesUrl)
+      .get<Hero[]>(this.heroesUrl, httpOptions)
       .pipe(map(data =>
         data),
         catchError(this.handleError));
