@@ -11,7 +11,7 @@ export class HeroService {
   private heroesUrl = 'app444/heroes1'; // URL to web api
   // "/"前面的app444定义成什么都可以
   // "/"后面这个 heroes 对应则是 in-memory-data.service 返回的{heroes}
-  // 因为这个内存Web服务的机理是拦截Web访问，也就是说随便什么地址都可以，内存Web服务会拦截这个地址并解析你的请求是否满足RESTful API的要求 
+  // 因为这个内存Web服务的机理是拦截Web访问，也就是说随便什么地址都可以，内存Web服务会拦截这个地址并解析你的请求是否满足RESTful API的要求
 
   constructor(private http: HttpClient) {}
 
@@ -29,9 +29,9 @@ export class HeroService {
 
   // Add new Hero
   private post(hero: Hero) {
-    const headers = new Headers({
-      'Content-Type': 'application/json'
-    });
+    // const headers = new Headers({
+    //   'Content-Type': 'application/json'
+    // });
 
     return this.http
       .post<Hero>(this.heroesUrl, hero)
@@ -39,8 +39,8 @@ export class HeroService {
   }
 
   delete(hero: Hero) {
-    const headers = new Headers();
-    headers.append('Content-Type', 'application/json');
+    // const headers = new Headers();
+    // headers.append('Content-Type', 'application/json');
 
     const url = `${this.heroesUrl}/${hero.id}`;
 
@@ -49,8 +49,8 @@ export class HeroService {
 
   // Update existing Hero
   private put(hero: Hero) {
-    const headers = new Headers();
-    headers.append('Content-Type', 'application/json');
+    // const headers = new Headers();
+    // headers.append('Content-Type', 'application/json');
 
     const url = `${this.heroesUrl}/${hero.id}`;
 

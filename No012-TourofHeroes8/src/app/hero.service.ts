@@ -26,32 +26,31 @@ export class HeroService {
 
   getHeroes() {
 
-    const httpOptions = {
-      headers: new HttpHeaders({
-        'Content-Type': 'application/json',
-      }),
-      dataType: 'jsonp',
-    };
-
     return this.http
-      .get<Hero[]>(this.heroesUrl, httpOptions)
-      .pipe(map(data =>
-        data),
-        catchError(this.handleError));
+      .get<Hero[]>(this.heroesUrl)   // <Hero[]> 改成 <any[]> 也可
+      .pipe(
+        map(
+          data => data
+        ),
+        catchError(this.handleError)
+      );
   }
 
   getHero(id: number): Observable<Hero> {
     return this.getHeroes().pipe(
       map(heroes =>
-        heroes.find(hero => hero.id === id))
+        heroes.find(hero => hero.id === id)
+      )
     );
   }
 
   // Add new Hero
   private post(hero: Hero) {
-    const headers = new Headers({
-      'Content-Type': 'application/json'
-    });
+    // const headers = new Headers({
+    //   'Content-Type': 'application/json'
+    // });
+
+    hero.age = 432;
 
     return this.http
       .post<Hero>(this.heroesUrl, hero)
@@ -59,8 +58,8 @@ export class HeroService {
   }
 
   delete(hero: Hero) {
-    const headers = new Headers();
-    headers.append('Content-Type', 'application/json');
+    // const headers = new Headers();
+    // headers.append('Content-Type', 'application/json');
 
     const url = `${this.heroesUrl}/${hero.id}`;
 
@@ -69,13 +68,13 @@ export class HeroService {
 
   // Update existing Hero
   private put(hero: Hero) {
-    const headers = new Headers();
-    headers.append('Content-Type', 'application/json');
+    // const headers = new Headers();
+    // headers.append('Content-Type', 'application/json');
 
-    const url = `${this.heroesUrl}/${hero.id}`;
+    //const url = `${this.heroesUrl}/${hero.id}`;
 
     return this.http
-      .put<Hero>(url, hero)
+      .put<Hero>(this.heroesUrl, hero)
       .pipe(catchError(this.handleError));
   }
 
