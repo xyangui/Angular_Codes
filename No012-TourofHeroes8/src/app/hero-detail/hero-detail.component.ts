@@ -35,7 +35,7 @@ export class HeroDetailComponent implements OnInit {
     this.route.params.forEach((params: Params) => {
       if (params['id'] !== undefined) {
 
-        //是导航到此页面
+        //是导航到此页面，修改hero
         const id = +params['id'];
         this.navigated = true;
         this.heroService.getHero(id).subscribe(hero => (this.hero = hero));
@@ -49,9 +49,17 @@ export class HeroDetailComponent implements OnInit {
   }
 
   save(): void {
+
     this.heroService.save(this.hero).subscribe(hero => {
-      this.hero = hero; // saved hero, w/ id if new
-      this.goBack(hero);
+
+      if(hero['result'] === 'patch_success'){
+        alert('保存成功！');
+        this.goBack();
+      }
+
+      //this.hero = hero; // saved hero, w/ id if new
+      //this.goBack(hero);
+
     }, error => (this.error = error)); // TODO: Display error message
   }
 

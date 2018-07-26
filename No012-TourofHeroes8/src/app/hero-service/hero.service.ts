@@ -41,7 +41,7 @@ export class HeroService {
     hero.age = 432; //数据库定义必须输入age
 
     return this.http
-      .post<Hero>(this.heroesUrl, hero)
+      .post<JSON>(this.heroesUrl, hero)
       .pipe(catchError(this.handleError));
   }
 
@@ -62,7 +62,7 @@ export class HeroService {
     const url = `${this.heroesUrl}/${hero.id}`;
 
     return this.http
-      .patch<Hero>(url, hero)              //因为没有输入age，所以用patch
+      .patch<JSON>(url, hero)              //因为没有输入age，所以用patch
       .pipe(catchError(this.handleError));
   }
 
