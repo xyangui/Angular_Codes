@@ -1,5 +1,11 @@
 <h2>My Heroes</h2>
 
+<button (click)="addHero()">Add New Hero Button</button>
+
+<a [routerLink]="['/detail']">
+  Add New Hero Hyperlink
+</a>
+
 <ul class="heroes">
   <li *ngFor="let hero of heroes" (click)="onSelect(hero)" [class.selected]="hero === selectedHero">
     <span class="hero-element">
@@ -10,11 +16,7 @@
 </ul>
 
 <div class="error" *ngIf="error">{{error}}</div>
-<button (click)="addHero()">Add New Hero</button>
-<div *ngIf="addingHero">
-  <my-hero-detail (close55)="close($event)"></my-hero-detail>
-  <!--(close55)是指my-hero-detail中的事件，close($event)是指本 ts 文件中的方法，$event是子组件向父组件传递的参数，可以为各种类型-->
-</div>
+
 
 <div *ngIf="selectedHero">
   <h2>

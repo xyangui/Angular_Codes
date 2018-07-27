@@ -11,11 +11,13 @@ import { HeroService } from '../hero-service/hero.service';
 export class HeroesComponent implements OnInit {
   heroes: Hero[];
   selectedHero: Hero;
-  addingHero = false;  //只有点击"Add New Hero"时，= true
   error: any;
-  //showNgFor = false;
 
   constructor(private router: Router, private heroService: HeroService) {}
+
+  ngOnInit(): void {
+    this.getHeroes();
+  }
 
   getHeroes(): void {
     this.heroService
@@ -29,24 +31,15 @@ export class HeroesComponent implements OnInit {
   }
 
   addHero(): void {
-    this.addingHero = true;
-    this.selectedHero = null;
+    this.router.navigate(['/detail']);
   }
 
-  /**
-   * 点击按钮"Add New Hero"，出现"my-hero-detail"，
-   * 点击按钮"Back"执行顺序是：
-   * this.close.emit(savedHero);  （hero-detail.component.ts中的goBack(savedHero: Hero = null)）
-   * close(savedHero: Hero);      （下面的）
-   * if (this.navigated) {...}    （hero-detail.component.ts中的goBack(savedHero: Hero = null)）
-   *
-   * @param {Hero} savedHero
-   */
-  close(savedHero: Hero): void {
-    this.addingHero = false;
-    if (savedHero) {
-      this.getHeroes();
-    }
+  onSelect(hero: Hero): void {
+    this.selectedHero = hero;
+  }
+
+  gotoDetail(): void {
+    this.router.navigate(['/detail', this.selectedHero.id]);
   }
 
   deleteHero(hero: Hero, event: any): void {
@@ -57,18 +50,5 @@ export class HeroesComponent implements OnInit {
         this.selectedHero = null;
       }
     }, error => (this.error = error));
-  }
-
-  ngOnInit(): void {
-    this.getHeroes();
-  }
-
-  onSelect(hero: Hero): void {
-    this.selectedHero = hero;
-    this.addingHero = false;
-  }
-
-  gotoDetail(): void {
-    this.router.navigate(['/detail', this.selectedHero.id]);
   }
 }

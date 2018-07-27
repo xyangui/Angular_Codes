@@ -1,10 +1,10 @@
-import {HttpClient, HttpErrorResponse, HttpHeaders} from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+
 import { Observable, throwError as observableThrowError } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 
 import { Hero } from './hero';
-import {RequestOptions} from "@angular/http";
 
 @Injectable()
 export class HeroService {
@@ -15,9 +15,8 @@ export class HeroService {
 
   getHeroes() {
     return this.http
-      .get<Hero[]>(this.heroesUrl)   // <Hero[]> 改成 <any[]> 也可
-      .pipe(
-        map(
+      .get<Hero[]>(this.heroesUrl)   // 返回值<Hero[]> 改成 <any[]> 也可，
+      .pipe(map(
           data => data
         ),
         catchError(this.handleError)
@@ -32,12 +31,7 @@ export class HeroService {
     );
   }
 
-  // Add new Hero
-  private post(hero: Hero) {
-    // const headers = new Headers({
-    //   'Content-Type': 'application/json'
-    // });
-
+  post(hero: Hero) {
     hero.age = 432; //数据库定义必须输入age
 
     return this.http
@@ -46,38 +40,17 @@ export class HeroService {
   }
 
   delete(hero: Hero) {
-    // const headers = new Headers();
-    // headers.append('Content-Type', 'application/json');
-
     const url = `${this.heroesUrl}/${hero.id}`;
 
     return this.http.delete<Hero>(url).pipe(catchError(this.handleError));
   }
 
-  // Update existing Hero
-  private put(hero: Hero) {
-    // const headers = new Headers();
-    // headers.append('Content-Type', 'application/json');
-
+  put(hero: Hero) {
     const url = `${this.heroesUrl}/${hero.id}`;
 
     return this.http
       .patch<JSON>(url, hero)              //因为没有输入age，所以用patch
       .pipe(catchError(this.handleError));
-  }
-
-  /**
-   *  let hero: Hero = new Hero();
-   *  hero.name = name;
-   *
-   *  hero.id 没有赋值， = undefined
-   *  if (hero.id) = false
-   */
-  save(hero: Hero) {
-    if (hero.id) {
-      return this.put(hero);
-    }
-    return this.post(hero);
   }
 
   private handleError(res: HttpErrorResponse | any) {

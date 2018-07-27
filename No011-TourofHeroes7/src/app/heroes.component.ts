@@ -10,7 +10,7 @@ import { HeroService } from './hero.service';
 })
 export class HeroesComponent implements OnInit {
   heroes: Hero[];
-  selectedHero: Hero;
+  selectedHero: Hero;  //当前逻辑是，add和selectedHero页面，只显示一个，二者没有必然联系，没有必要只显示一个
   addingHero = false;  //只有点击"Add New Hero"时，= true
   error: any;
   //showNgFor = false;
@@ -42,7 +42,7 @@ export class HeroesComponent implements OnInit {
    */
   close(savedHero: Hero): void {
     this.addingHero = false;
-    if (savedHero) {
+    if (savedHero) {      //新增了hero，重新获取所有数据，逻辑比较复杂
       this.getHeroes();
     }
   }

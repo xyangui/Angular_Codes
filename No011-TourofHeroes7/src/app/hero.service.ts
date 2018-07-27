@@ -65,6 +65,8 @@ export class HeroService {
    *
    *  hero.id 没有赋值， = undefined
    *  if (hero.id) = false
+   *
+   *  只有一个save，逻辑比较混乱，调用save在detail里，调用者应该知道post还是put
    */
   save(hero: Hero) {
     if (hero.id) {
