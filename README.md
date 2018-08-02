@@ -25,5 +25,6 @@ No011-TourofHeroes7      英雄指南终极版本：升级了 heroes.component.h
                          增加 hero 整合到 detail 页面里，在Service里增加修改统一由save处理
                          heroes.component.html里有：子组件向父组件传递参数：
                          子组件可以通过  @Output() close55 = new EventEmitter();  传参数
+No012-TourofHeroes8      英雄指南web终极版本：调用网络api，http://www.empirecclt.com.au/public/api/allapi
 
 

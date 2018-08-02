@@ -32,7 +32,7 @@ export class HeroService {
   }
 
   post(hero: Hero) {
-    hero.age = 432; //数据库定义必须输入age
+    //hero.age = 432; //数据库定义必须输入age
 
     return this.http
       .post<JSON>(this.heroesUrl, hero)
