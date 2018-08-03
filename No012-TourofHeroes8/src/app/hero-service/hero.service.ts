@@ -23,6 +23,11 @@ export class HeroService {
       );
   }
 
+  /**
+   * 改成直接获取数据
+   * @param {number} id
+   * @returns {Observable<Hero>}
+   */
   getHero(id: number): Observable<Hero> {
     return this.getHeroes().pipe(
       map(heroes =>
