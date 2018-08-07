@@ -2,12 +2,10 @@ import { TestBed, async } from '@angular/core/testing';
 import { AppComponent } from './app.component';
 import {FormsModule} from "@angular/forms";
 import {AppRoutingModule} from "./app-routing.module";
-import {HttpClientModule} from "@angular/common/http";
 import {DashboardComponent} from "./heroes-dashboard/dashboard.component";
 import {HeroSearchComponent} from "./hero-search/hero-search.component";
 import {HeroesComponent} from "./heroes-list/heroes.component";
 import {HeroDetailComponent} from "./hero-detail/hero-detail.component";
-import {HeroService} from "../../../No011-TourofHeroes7/src/app/hero.service";
 import {APP_BASE_HREF} from "@angular/common";
 
 describe('AppComponent', () => {
