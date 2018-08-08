@@ -30,9 +30,30 @@ describe('HeroService', () => {
       });
   })));
 
-  /**
-   * 写一个get所有hero的测试
-   */
+
+  it('test API get all hero should be ok', async(inject([HeroService], (service: HeroService) => {
+    service.getHeroes().subscribe(
+      (heroes) => {
+
+        let hero:Hero = heroes.find(hero => hero.id === 1);
+        expect(hero.id).toBe(1);
+        expect(hero.name).toBe('mike');
+        expect(hero.age).toBe(11);
+        expect(hero.comment).toBe('');
+
+        hero = heroes.find(hero => hero.id === 3);
+        expect(hero.id).toBe(3);
+        expect(hero.name).toBe('tom');
+        expect(hero.age).toBe(33);
+        expect(hero.comment).toBe('ggg');
+
+        hero = heroes.find(hero => hero.id === 73);
+        expect(hero.id).toBe(73);
+        expect(hero.name).toBe('Jason');
+        expect(hero.age).toBe(122);
+        expect(hero.comment).toBeNull();
+      });
+  })));
 
   it('test API post, get, put, delete', async(inject([HeroService], (service: HeroService) => {
 
