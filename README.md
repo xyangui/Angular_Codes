@@ -27,6 +27,6 @@ No011-TourofHeroes7      英雄指南终极版本：升级了 heroes.component.h
                          子组件可以通过  @Output() close55 = new EventEmitter();  传参数
 No012-TourofHeroes8      英雄指南web终极版本：调用网络api，http://www.empirecclt.com.au/public/api/allapi
                          完成单元测试，并修改完成No005至No011所有单元测试
-No018-Directive          Directive的使用，改变鼠标悬停的背景色
+No018-Directive          自定义指令Directive的使用，改变鼠标悬停的背景色，ngModel，ngFor和ngIf是angular自带指令
 
 

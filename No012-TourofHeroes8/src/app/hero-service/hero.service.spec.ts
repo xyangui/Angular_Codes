@@ -20,13 +20,14 @@ describe('HeroService', () => {
   }));
 
   it('test API get one hero should be ok', async(inject([HeroService], (service: HeroService) => {
-    service.getHero(73).subscribe(
+    service.getHero(2).subscribe(
       (hero) => {
-        expect(hero.id).toBe(73);
+        expect(hero.id).toBe(2);
         expect(hero.name).not.toBeNull();
-        expect(hero.name).toBe('Jason');
-        expect(hero.age).toBe(122);
-        expect(hero.comment).toBeNull();
+        expect(hero.name).toBe('jason22');
+        expect(hero.age).toBe(22);
+        expect(hero.comment).toBe('jason22@empire.edu.au');
+        //expect(hero.comment).toBeNull();
       });
   })));
 
@@ -37,29 +38,31 @@ describe('HeroService', () => {
 
         let hero:Hero = heroes.find(hero => hero.id === 1);
         expect(hero.id).toBe(1);
-        expect(hero.name).toBe('mike');
-        expect(hero.age).toBe(11);
-        expect(hero.comment).toBe('');
+        expect(hero.name).toBe('jason');
+        expect(hero.age).toBe(14);
+        expect(hero.comment).toBe('jason@empire.edu.au');
+
+        hero = heroes.find(hero => hero.id === 2);
+        expect(hero.id).toBe(2);
+        expect(hero.name).toBe('jason22');
+        expect(hero.age).toBe(22);
+        expect(hero.comment).toBe('jason22@empire.edu.au');
 
         hero = heroes.find(hero => hero.id === 3);
         expect(hero.id).toBe(3);
-        expect(hero.name).toBe('tom');
+        expect(hero.name).toBe('jason33');
         expect(hero.age).toBe(33);
-        expect(hero.comment).toBe('ggg');
-
-        hero = heroes.find(hero => hero.id === 73);
-        expect(hero.id).toBe(73);
-        expect(hero.name).toBe('Jason');
-        expect(hero.age).toBe(122);
-        expect(hero.comment).toBeNull();
+        expect(hero.comment).toBe('jason33@empire.edu.au');
+        //expect(hero.comment).toBeNull();
       });
   })));
 
   it('test API post, get, put, delete', async(inject([HeroService], (service: HeroService) => {
 
     let hero: Hero = new Hero();
-    hero.name = 'Jason';
+    hero.name = 'Jason41';
     hero.age = 41;
+    hero.comment = 'comment41';
 
     // 方案1
     // service.post(hero).subscribe(
@@ -86,9 +89,10 @@ describe('HeroService', () => {
       }),
       flatMap(hero => {
         expect(hero.id).toBe(id);
-        expect(hero.name).toBe('Jason');
+        expect(hero.name).toBe('Jason41');
         expect(hero.age).toBe(41);
-        expect(hero.comment).toBeNull();
+        expect(hero.comment).toBe('comment41');
+        //expect(hero.comment).toBeNull();
 
         hero.name = 'ivan';
         hero.age = 30;
